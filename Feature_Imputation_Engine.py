@@ -60,9 +60,9 @@ def feature_imputation_main(data_df, feat_list ,impute_local_key_list=[],missing
         imputed_df = pd.DataFrame(run_imputation_local(data_df=temp_df,feat_list=feat_list,impute_local_key_list=impute_local_key_list,missing_val_list=missing_val_list))
         print(imputed_df.head())
 
-    if impute_type in ('KNN'):
+    if impute_type in ('knn'):
         temp_df = data_df.copy()
-        imputed_df = pd.DataFrame(run_feature_imputation_knn(feat_list=feat_list,missing_val_list=missing_val_list,data_df=temp_df))        
+        imputed_df = pd.DataFrame(run_feature_imputation_knn(feat_list=feat_list,missing_val_list=missing_val_list,data_df=temp_df,k_neighbors=50))        
         print(imputed_df.head())
     
     print("IMPUTATION COMPLETE")
@@ -291,7 +291,7 @@ def feature_imputation_local(data_df,var_name,impute_local_key_list=[],missing_v
     return(data_df)
 
 ##################################################################################################
-def run_feature_imputation_knn(feat_list,missing_val_list,data_df):
+def run_feature_imputation_knn(feat_list,missing_val_list,data_df,k_neighbors):
     """
     
     Performs imputation on data column indicated by parameter "var_name"
@@ -303,7 +303,7 @@ def run_feature_imputation_knn(feat_list,missing_val_list,data_df):
     data_df_imputed_f=data_df
     print("Starting ... KNN Imputation")
 
-    knn_dict=find_knn(feat_list,missing_val_list,data_df)
+    knn_dict=find_knn(feat_list,missing_val_list,data_df,k_neighbors)
     
     for j in knn_dict.keys():
         missing_feat_df = pd.DataFrame({'missing':data_df.iloc[j].isnull()})
@@ -362,7 +362,7 @@ def run_feature_imputation_knn(feat_list,missing_val_list,data_df):
     return(data_df_imputed_f)       
         
 
-def find_knn(feat_list,missing_val_list,data_df):
+def find_knn(feat_list,missing_val_list,data_df,k_neighbors):
     """    
     Finds K nearest neighbours for each record with missing values 
     
@@ -462,7 +462,7 @@ def find_knn(feat_list,missing_val_list,data_df):
     chunk=200
     #number_of_observations=400
     number_of_observations=data_df.shape[0]
-    k_neighbors=10
+    #k_neighbors=10
 
     dist_array_full =[]
     knn_dict ={}
