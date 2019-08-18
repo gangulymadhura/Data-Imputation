@@ -1,7 +1,7 @@
 # Data-Imputation
-# A module of python functions to impute data
+## A module of python functions to impute data
 
-This module offers 4 ways of imputing data which are as follows:
+### This module offers 4 ways of imputing data which are as follows:
 --------------------------------------------------------------------------------------------------------------------------------
 
 1. Fixed value imputation - impute all missing values with a single value.
@@ -12,7 +12,7 @@ This module offers 4 ways of imputing data which are as follows:
 
 4. KNN imputation - as the name suggests, this method finds the K nearest neighbours for each record with missing value and imputes the missing values based on the K nearest neighbours. The functions checks for sparsity in K nearest neighbour and raises warning message if the feature to be used for imputation has over 50% miss rate.
 
-How to use ?
+### How to use ?
 ----------------------------------------------------------------------------------------------------------------------------------
 
 There are 6 parameters in all :
@@ -31,17 +31,18 @@ There are 6 parameters in all :
 7.k_neighbors : no. of nearest neighbours to be considered (default 50), only needed for "knn" imputation
 
 
-How to call ?
+### How to call ?
 ----------------------------------------------------------------------------------------------------------------------------------
-# Example - Fixed Imputation
-'''
+### Example - Fixed Imputation
+
+```python
 from Feature_Imputation_Engine import *
 import pandas as pd
 import numpy as np
 import matplotlib
 import math
 
-## Set Parameters
+#Set Parameters
 data_df = pd.read_csv('merchants.csv')
 impute_type = 'fixed'  
 feat_list= list(data_df.columns)
@@ -49,20 +50,21 @@ replace_value=0
 
 data_df_imp= feature_imputation_main(data_df=data_df, feat_list=feat_list,impute_local_key_list=impute_local_key_list,missing_val_list=missing_val_list,impute_type = impute_type)
 
-## Check for missing values
+#Check for missing values
 missing_val = data_df_imp.isnull().sum().sum()
 print("Missing values :",missing_val)
-'''
+```
 _______________________________________________________________________________________________________________________________________
-# Example - Local Imputation
+### Example - Local Imputation
 
+```python
 from Feature_Imputation_Engine import *
 import pandas as pd
 import numpy as np
 import matplotlib
 import math
 
-## Set Parameters
+#Set Parameters
 data_df = pd.read_csv('merchants.csv')
 impute_type = 'local'  
 impute_local_key_list = ['merchant_category_id']
@@ -71,20 +73,21 @@ replace_value=0
 
 data_df_imp= feature_imputation_main(data_df=data_df, feat_list=feat_list,impute_local_key_list=impute_local_key_list,missing_val_list=missing_val_list,impute_type = impute_type)
 
-## Check for missing values
+#Check for missing values
 missing_val = data_df_imp.isnull().sum().sum()
 print("Missing values :",missing_val)
-
+```
 _______________________________________________________________________________________________________________________________________
-# Example - Global Imputation
+### Example - Global Imputation
 
+```python
 from Feature_Imputation_Engine import *
 import pandas as pd
 import numpy as np
 import matplotlib
 import math
 
-## Set Parameters
+#Set Parameters
 data_df = pd.read_csv('merchants.csv')
 impute_type = 'knn'  
 impute_local_key_list = ['merchant_category_id']
@@ -93,20 +96,21 @@ replace_value=0
 
 data_df_imp= feature_imputation_main(data_df=data_df, feat_list=feat_list,impute_local_key_list=impute_local_key_list,missing_val_list=missing_val_list,impute_type = 'global')
 
-## Check for missing values
+#Check for missing values
 missing_val = data_df_imp.isnull().sum().sum()
 print("Missing values :",missing_val)
 
-_______________________________________________________________________________________________________________________________________
-# Example - KNN Imputation
-
+```
+______________________________________________________________________________________________________________________________________
+### Example - KNN Imputation
+```python
 from Feature_Imputation_Engine import *
 import pandas as pd
 import numpy as np
 import matplotlib
 import math
 
-## Set Parameters
+#Set Parameters
 data_df = pd.read_csv('merchants.csv')
 impute_type = 'knn'  
 feat_list= list(data_df.columns)
@@ -115,6 +119,8 @@ k_neighbors= 50
 
 data_df_imp= feature_imputation_main(data_df=data_df, feat_list=feat_list,impute_local_key_list=impute_local_key_list,missing_val_list=missing_val_list,impute_type = impute_type)
 
-## Check for missing values
+#Check for missing values
 missing_val = data_df_imp.isnull().sum().sum()
 print("Missing values :",missing_val)
+
+```
