@@ -34,7 +34,7 @@ There are 6 parameters in all :
 How to call ?
 ----------------------------------------------------------------------------------------------------------------------------------
 # Example - Fixed Imputation
-
+'''
 from Feature_Imputation_Engine import *
 import pandas as pd
 import numpy as np
@@ -52,7 +52,7 @@ data_df_imp= feature_imputation_main(data_df=data_df, feat_list=feat_list,impute
 ## Check for missing values
 missing_val = data_df_imp.isnull().sum().sum()
 print("Missing values :",missing_val)
-
+'''
 _______________________________________________________________________________________________________________________________________
 # Example - Local Imputation
 
