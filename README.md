@@ -24,7 +24,7 @@ There are 6 parameters in all :
 
 4.missing_val_list : list of values considered to be missing values 
 
-5.impute_type : 'fixed','global','local','KNN'
+5.impute_type : 'fixed','global','local','knn'
 
 6.replace_value : imputation value, only needed for "fixed" imputation
 
