@@ -43,7 +43,7 @@ replace_value=0
 
 data_df_imp= feature_imputation_main(data_df=data_df, feat_list=feat_list,impute_local_key_list=impute_local_key_list,missing_val_list=missing_val_list,impute_type = impute_type)
 
-#Check for missing values
+##Check for missing values
 missing_val = data_df_imp.isnull().sum().sum()
 print("Missing values :",missing_val)
 
@@ -56,7 +56,7 @@ import numpy as np
 import matplotlib
 import math
 
-#Set Parameters
+##Set Parameters
 data_df = pd.read_csv('merchants.csv')
 impute_type = 'local'  
 impute_local_key_list = ['merchant_category_id']
@@ -65,7 +65,7 @@ replace_value=0
 
 data_df_imp= feature_imputation_main(data_df=data_df, feat_list=feat_list,impute_local_key_list=impute_local_key_list,missing_val_list=missing_val_list,impute_type = impute_type)
 
-#Check for missing values
+##Check for missing values
 missing_val = data_df_imp.isnull().sum().sum()
 print("Missing values :",missing_val)
 
@@ -78,7 +78,7 @@ import numpy as np
 import matplotlib
 import math
 
-#Set Parameters
+##Set Parameters
 data_df = pd.read_csv('merchants.csv')
 impute_type = 'knn'  
 impute_local_key_list = ['merchant_category_id']
@@ -87,7 +87,7 @@ replace_value=0
 
 data_df_imp= feature_imputation_main(data_df=data_df, feat_list=feat_list,impute_local_key_list=impute_local_key_list,missing_val_list=missing_val_list,impute_type = 'global')
 
-#Check for missing values
+##Check for missing values
 missing_val = data_df_imp.isnull().sum().sum()
 print("Missing values :",missing_val)
 
@@ -100,7 +100,7 @@ import numpy as np
 import matplotlib
 import math
 
-#Set Parameters
+##Set Parameters
 data_df = pd.read_csv('merchants.csv')
 impute_type = 'knn'  
 feat_list= list(data_df.columns)
@@ -109,6 +109,6 @@ k_neighbors= 50
 
 data_df_imp= feature_imputation_main(data_df=data_df, feat_list=feat_list,impute_local_key_list=impute_local_key_list,missing_val_list=missing_val_list,impute_type = impute_type)
 
-#Check for missing values
+##Check for missing values
 missing_val = data_df_imp.isnull().sum().sum()
 print("Missing values :",missing_val)
