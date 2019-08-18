@@ -35,7 +35,7 @@ import numpy as np
 import matplotlib
 import math
 
-#Set Parameters
+## Set Parameters
 data_df = pd.read_csv('merchants.csv')
 impute_type = 'fixed'  
 feat_list= list(data_df.columns)
